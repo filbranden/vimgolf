@@ -4,12 +4,13 @@ class EntryController < ApplicationController
   before_action :load_entry, :only => [:comment, :destroy]
 
   def comment
-    puts("DEBUG: Params = #{params.inspect} ; User = #{current_user.inspect} ; Entry = #{@entry.inspect}")
+    puts("DEBUG: Params = #{params.inspect} ; User = #{current_user.inspect} ; Entry = #{@entry.inspect} ; Challenge = #{@entry.challenge.inspect}")
     if @challenge.participator?(current_user) && @entry && params.fetch(:comment, {})[:text].present?
       @entry.comments.create(
         comment: params[:comment][:text],
         user: current_user
       )
+      puts("DEBUG: Created entry = #{@entry.comments.inspect}")
     end
 
     redirect_to challenge_path(params[:challenge])
