@@ -4,7 +4,7 @@ class EntryController < ApplicationController
   before_action :load_entry, :only => [:comment, :destroy]
 
   def comment
-    puts("DEBUG: Params = #{params.inspect} ; User = #{current_user.inspect}")
+    puts("DEBUG: Params = #{params.inspect} ; User = #{current_user.inspect} ; Entry = #{@entry.inspect}")
     if @challenge.participator?(current_user) && @entry && params.fetch(:comment, {})[:text].present?
       @entry.comments.create(
         comment: params[:comment][:text],
