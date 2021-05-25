@@ -5,6 +5,8 @@ jobs:
   include:
     - rvm: 2.6.7 # Test web AND cli with specific version
       gemfile: Gemfile
+    - rvm: 3.0 # Test only the cli.
+      gemfile: lib/vimgolf/Gemfile
     - rvm: 2.4 # Test only the cli.
       gemfile: lib/vimgolf/Gemfile
     - rvm: 2.3 # Test only the cli, on older Ruby.
