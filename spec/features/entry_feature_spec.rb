@@ -48,7 +48,7 @@ feature "Entries for Challenges" do
         click_link 'test'
         click_link 'Comment'
         fill_in 'comment_text', with: 'test comment'
-        expect { click_button 'Comment' }.to change { Challenge.first.entries.first.comments.count }.from(0).to(1)
+        expect { click_button 'Comment' }.to change { p Challenge.all; p Challenge.first.entries; p Challenge.first.entries.first.comments; Challenge.first.entries.first.comments.count }.from(0).to(1)
         expect(page).to have_css '.comment', text: 'the science guy: test comment'
         expect(page).to have_text '1 comment'
       end
