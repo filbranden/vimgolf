@@ -28,3 +28,24 @@ jobs:
       - name: Run RSpec tests
         run: bundle exec rake
 
+  client-rspec:
+    strategy:
+      matrix:
+        #ruby-version: ['2.0', '2.3', '2.4', '2.7', '3.0']
+        #os: [ubuntu-latest, macos-latest, windows-latest]
+        ruby-version: ['2.0', '2.4', '2.7']
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    env:
+      BUNDLE_GEMFILE: lib/vimgolf/Gemfile
+    steps:
+      - name: Check out git tree
+        uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+          bundler-cache: true
+      - name: Run RSpec tests
+        run: bundle exec rake
+
