@@ -67,9 +67,8 @@ jobs:
         include:
           - os: ubuntu-latest
             ruby-version: '2.1.9'
-          #- os: windows-latest
-          #  ruby-version: '2.7.3'
-          #  (Windows fails on spec/lib/cli_spec.rb:115)
+          - os: windows-latest
+            ruby-version: '2.7.3'
     runs-on: ${{ matrix.os }}
     steps:
       - name: Check out git tree
