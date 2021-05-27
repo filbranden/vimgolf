@@ -27,6 +27,10 @@ jobs:
           bundler-cache: true
       - name: Run RSpec tests
         run: bundle exec rake
+      - name: Upload coverage information
+        uses: codecov/codecov-action@v1
+        with:
+          files: ./coverage/coverage.xml
 
   client-rspec:
     strategy:
