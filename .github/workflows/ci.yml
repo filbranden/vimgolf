@@ -41,10 +41,10 @@ jobs:
           POSTGRES_USER: vimgolfgh
           POSTGRES_PASSWORD: vimgolfpw
         ports:
-          - '5432'
+          - 5432:5432
     env:
       DATABASE_ADAPTER: pg
-      DATABASE_URL: postgresql://vimgolfgh:vimgolfpw@localhost:${{ job.services.postgres.ports['5432'] }}/
+      DATABASE_URL: postgresql://vimgolfgh:vimgolfpw@localhost/
     steps:
       - name: Check out git tree
         uses: actions/checkout@v2
