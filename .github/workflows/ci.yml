@@ -32,6 +32,31 @@ jobs:
         with:
           files: ./coverage/coverage.xml
 
+  rspec-pg:
+    runs-on: ubuntu-18.04
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          - POSTGRES_USER: vimgolfgh
+          - POSTGRES_PASSWORD: vimgolfpw
+        ports:
+          - '5432'
+    env:
+      DATABASE_ADAPTER: pg
+      DATABASE_URL: postgresql://vimgolfgh:vimgolfpw@localhost:${{ job.services.postgres.ports['5432'] }}/
+    steps:
+      - name: Check out git tree
+        uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Create database
+        run: bundle exec rails db:create db:migrate RAILS_ENV=test
+      - name: Run RSpec tests
+        run: bundle exec rake
+
   client-rspec:
     strategy:
       fail-fast: false
