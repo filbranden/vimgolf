@@ -10,12 +10,11 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.6.7'
           bundler-cache: true
       - name: Run rubocop
         run: bundle exec rubocop
 
-  rspec:
+  rspec-rails:
     runs-on: ubuntu-latest
     steps:
       - name: Check out git tree
@@ -23,7 +22,6 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.6.7'
           bundler-cache: true
       - name: Run RSpec tests
         run: bundle exec rake
@@ -32,7 +30,19 @@ jobs:
         with:
           files: ./coverage/coverage.xml
 
-  rspec-pg:
+  rspec-rails-macos:
+    runs-on: macos-latest
+    steps:
+      - name: Check out git tree
+        uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Run RSpec tests
+        run: bundle exec rake
+
+  rspec-rails-pg:
     runs-on: ubuntu-18.04
     services:
       postgres:
@@ -57,7 +67,7 @@ jobs:
       - name: Run RSpec tests
         run: bundle exec rake
 
-  client-rspec:
+  rspec-client-gem:
     strategy:
       fail-fast: false
       matrix:
@@ -81,5 +91,5 @@ jobs:
           ruby-version: ${{ matrix.ruby-version }}
           bundler-cache: true
       - name: Run RSpec tests
-        run: cd lib/vimgolf/ && bundle exec rake
-
+        working-directory: lib/vimgolf
+        run: bundle exec rake
