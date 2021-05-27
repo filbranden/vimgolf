@@ -38,8 +38,8 @@ jobs:
       postgres:
         image: postgres:latest
         env:
-          - POSTGRES_USER: vimgolfgh
-          - POSTGRES_PASSWORD: vimgolfpw
+          POSTGRES_USER: vimgolfgh
+          POSTGRES_PASSWORD: vimgolfpw
         ports:
           - '5432'
     env:
