@@ -84,6 +84,10 @@ jobs:
         include:
           - os: ubuntu-latest
             ruby-version: '2.1.9'
+          - os: ubuntu-latest
+            ruby-version: '2.0.0-p648'
+          - os: macos-latest
+            ruby-version: '2.0.0-p648'
           - os: windows-latest
             ruby-version: '2.7.3'
     runs-on: ${{ matrix.os }}
@@ -91,7 +95,7 @@ jobs:
       - name: Check out git tree
         uses: actions/checkout@v2
       - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+        uses: filbranden/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby-version }}
           bundler-cache: true
