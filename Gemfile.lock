@@ -288,7 +288,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
-    sqlite3 (1.3.13)
+    sqlite3 (1.4.4)
     thor (1.2.1)
     thread_safe (0.3.6)
     tilt (2.0.11)
@@ -354,7 +354,7 @@ DEPENDENCIES
   simplecov
   simplecov-cobertura
   sprockets-rails (~> 2.0)
-  sqlite3 (~> 1.3.6)
+  sqlite3 (~> 1.4.4)
   tweet-button
   uglifier (>= 1.0.3)
   unicorn
@@ -362,7 +362,7 @@ DEPENDENCIES
   webmock
 
 RUBY VERSION
-   ruby 2.7.6p219
+   ruby 3.1.2p20
 
 BUNDLED WITH
-   2.1.4
+   2.3.20
