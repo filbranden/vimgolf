@@ -31,7 +31,7 @@ gem 'ruby_identicon'
 gem 'vimgolf', path: 'lib/vimgolf'
 
 group :test, :development do
-  gem 'sqlite3', '~> 1.3.6'
+  gem 'sqlite3', '~> 1.4'
   gem 'rspec-rails', '~> 4.0'
   gem 'rails-controller-testing'
   gem 'shoulda-matchers'
