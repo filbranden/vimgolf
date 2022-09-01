@@ -6,11 +6,12 @@ jobs:
   rspec-rails-macos:
     runs-on: macos-latest
     steps:
+      - name: Check out git tree
+        uses: actions/checkout@v2
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.7.6'
-          bundler-cache: false
+          bundler-cache: true
       - name: Dump pgsql build config
         run: |
           set -x
@@ -23,7 +24,5 @@ jobs:
           pg_config --libs
       - name: Get Ruby version
         run: ruby --version
-      - name: Build pg Ruby gem
-        run: gem install -V --version '1.2.3' pg
       - name: Require pg gem
         run: ruby -e 'require "pg"'
