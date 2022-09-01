@@ -12,6 +12,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+          cache-version: 1
       - name: Dump pgsql build config
         run: |
           set -x
@@ -25,4 +26,4 @@ jobs:
       - name: Get Ruby version
         run: ruby --version
       - name: Require pg gem
-        run: ruby -e 'require "pg"'
+        run: bundle exec ruby -e 'require "pg"'
