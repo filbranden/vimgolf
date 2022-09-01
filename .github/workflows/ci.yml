@@ -39,6 +39,8 @@ jobs:
     env:
       FERRUM_PROCESS_TIMEOUT: 30
     steps:
+      - name: Install libpq Homebrew formula
+        run: brew install libpq
       - name: Check out git tree
         uses: actions/checkout@v2
       - name: Set up Ruby
