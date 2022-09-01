@@ -39,6 +39,10 @@ jobs:
     env:
       FERRUM_PROCESS_TIMEOUT: 30
     steps:
+      - name: Symlink Homebrew postgres
+        run: |
+          ln -s postgresql@14 /usr/local/opt/postgresql
+          ln -s postgresql@14/libpq.5.dylib /usr/local/opt/postgresql/lib/libpq.5.dylib
       - name: Check out git tree
         uses: actions/checkout@v2
       - name: Set up Ruby
